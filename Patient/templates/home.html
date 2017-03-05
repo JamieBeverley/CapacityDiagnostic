@@ -5,10 +5,12 @@
 
 <div class='container'>
 	<h1>Welcome {{user}}</h1>
+	<h2>{{msg}} </h2>
+	<h2>score:  {{ score  }}</h2>>
 	<h2>Please complete the following form:</h2>
 
 	<form method="POST"> 
-
+	{% csrf_token %}
 	{% bootstrap_form form %}
 	<input type="submit"></input>
 	</form>

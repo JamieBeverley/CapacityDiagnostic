@@ -18,5 +18,5 @@ class QuestionForm(forms.ModelForm):
 class ProfileForm(forms.ModelForm):
 	class Meta:
 		model = Profile
-		fields = ['healthcardNumber']
+		fields = ['healthcardNumber','isResearcher']
 		widgets = {'healthcardNumber': forms.TextInput}

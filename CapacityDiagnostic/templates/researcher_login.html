@@ -5,10 +5,16 @@
 <div class='container bg-info'>
 
 
-  <h2>Login</h2>
+  <h2>Researcher Login</h2>
+
+  {{ form.errors }}
+  {{ form.non_field_errors }}
+
+
   <form method="post" class='form'>
     {% csrf_token %}
-  	{% bootstrap_form form %}  	
+  	{% bootstrap_form form %}  
+		<h2>{{errorMsg}}</h2>
   			{% buttons %}
     		<button type="submit" class="btn btn-primary">
       		{% bootstrap_icon "star" %} Submit
@@ -17,6 +23,7 @@
   </form>
 	<a href="/new_account">New Account</a>
     <a href="/about">About</a>
+
 </div>
 
 

@@ -12,6 +12,7 @@ class Profile(models.Model):
 	user = models.OneToOneField(User,on_delete=models.CASCADE)
 	healthcardNumber = models.CharField(primary_key=True,max_length=12,verbose_name="Health Card Number")
 	score = models.FloatField(null=True,verbose_name="Capacity score")
+	isResearcher = models.BooleanField(default=False,verbose_name="Researcher?")
 
 
 # CHOICES1 = (('a','The beach'),('b','An amusement park'),('c','The dinner table'),(0,'I am not sure'))
@@ -33,14 +34,14 @@ CHOICES7 = (('y','Yes'),('n','No'))
 
 class Questions(models.Model):
 	profile = models.ForeignKey('Profile', on_delete=models.CASCADE,null=True)
-	Q1 = models.IntegerField(choices=CHOICES1,verbose_name="Where is the patient at the beginning of the story?")
-	Q2 = models.IntegerField(choices=CHOICES2,verbose_name="What is the patient's concern?")
-	Q3 = models.IntegerField(choices=CHOICES3,verbose_name="What does the doctor suggest for the patient?")
-	Q4 = models.IntegerField(choices=CHOICES4,verbose_name="What are the risks of the surgery that the doctor explains to the patient?")
-	Q5 = models.IntegerField(choices=CHOICES5,verbose_name="Do the risks of receiving the cataract surgery outweigh the risks of not receiving the surgery?")
-	Q6 = models.IntegerField(choices=CHOICES6,verbose_name="If the patient does not receive the surgery...")
-	Q7 = models.CharField(max_length=1, choices=(('y','Yes'),('n','No')),verbose_name="In your opinion, should the patient receive the surgery?")
-	Q8 = models.CharField(max_length=400, verbose_name="Why?")
+	Q1 = models.IntegerField(null=True,choices=CHOICES1,verbose_name="Where is the patient at the beginning of the story?")
+	Q2 = models.IntegerField(null=True,choices=CHOICES2,verbose_name="What is the patient's concern?")
+	Q3 = models.IntegerField(null=True,choices=CHOICES3,verbose_name="What does the doctor suggest for the patient?")
+	Q4 = models.IntegerField(null=True,choices=CHOICES4,verbose_name="What are the risks of the surgery that the doctor explains to the patient?")
+	Q5 = models.IntegerField(null=True,choices=CHOICES5,verbose_name="Do the risks of receiving the cataract surgery outweigh the risks of not receiving the surgery?")
+	Q6 = models.IntegerField(null=True,choices=CHOICES6,verbose_name="If the patient does not receive the surgery...")
+	Q7 = models.CharField(null=True,max_length=1, choices=(('y','Yes'),('n','No')),verbose_name="In your opinion, should the patient receive the surgery?")
+	Q8 = models.CharField(null=True,max_length=400, verbose_name="Why?")
 
 
 

@@ -16,19 +16,9 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
-from Patient import views as patient_views
-from Researcher import views as researcher_views
 from . import views
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^login/$', auth_views.login, {'template_name': 'login.html'}, name='login'),
-    url(r'^logout/$', views.logout_user, name='logout_user'),
-    url(r'^new_account/$', views.new_account, name='new_account'),
-    url(r'^about/$', views.about, name="about"),
-    url(r'^researcher_login/$', views.researcher_login, name="researcher_login"),
-    url(r'^researcher_home/$', researcher_views.researcher_home, name="researcher_home"),
-    url(r'^accounts/login/?next=/researcher_home/$',researcher_views.researcher_home, name="researcher_home"),
-    url(r'^home/$', patient_views.home,name='patient_home')
+    # url(r'^logout/', views.logout, name='logout')
     # url('^', include('django.contrib.auth.urls'))
 ]

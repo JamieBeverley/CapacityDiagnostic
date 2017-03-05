@@ -1,29 +1,33 @@
+<div class="bg-info">
 {% extends 'patientBase.html' %}
 {% load bootstrap3 %}
 {% load static %}
 
-
 {% block content%}
 
 
-<div class='container'>
+
+<div class='container bg-warning'>
 	
 	
-	<h1>Welcome {{user}}</h1>
+	
 	
 	{% if notSubmitted%}
+	<h1>Welcome {{user}}</h1>
 	<video controls>
 		<source src="{% static "Patient/v1.mp4" %}" type="video/mp4"> </source>
  	</video>
 
-	<h2>Please complete the following form:</h2>
+	<h2>Please answer the following questions to the best of your ability:</h2>
 
 	<form method="POST"> 
 	{% csrf_token %}
 	{% bootstrap_form form %}
-	<input type="submit"></input>
+
+	<input type="submit" value="Submit"></input>
 	</form>
 	{% endif %}
 	<h2>{{msg}} </h2>
 </div>
 {% endblock%}
+

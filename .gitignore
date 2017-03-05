@@ -1,2 +1,9 @@
 *.sqlite3
 *.pyc
+
+.Python*
+*.DS_Store
+bin/*
+include*
+lib/*
+pip*

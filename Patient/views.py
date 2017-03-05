@@ -24,16 +24,25 @@ def home(request):
 	template = loader.get_template('home.html')
 	form = QuestionForm()
 	if (request.method=="POST"):
-		form = QuestionForm(request.POST)
+		profile = Profile.objects.get(user_id=request.user)
+		questionResponse = Questions.objects.create(profile=profile)
+
+		form = QuestionForm(request.POST,instance=questionResponse)
 		if form.is_valid():
 			score = 0
 			for i in [('Q'+str(i)) for i in range(1,7)]:
 				score = score+ int(request.POST[i])
-			
-			questionResponse = Questions.objects.create(profile=Profile.objects.get(user_id=request.user))
-			form.save(instance=questionResponse)
-
+			# return HttpResponse(profile.h)
+			form.save()
+			profile.score = score 
+			profile.save()
 			msg = 'Thank you, your answers have been recorded.'
+
+
+
+			for i in [('Q'+str(i)) for i in range(1,7)]:
+				score = score+ int(request.POST[i])
+			msg = 'Thank you, your score has been recorded'
 			return HttpResponse(template.render({'score':score,'form':form,'msg':msg},request))
 		else:
 			return HttpResponse([(field.label,field.errors) for field in form])

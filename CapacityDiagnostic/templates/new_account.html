@@ -8,9 +8,11 @@
 <h2> New Account</h2>
 <form method='POST' class='form'>
 {% csrf_token %}
+
 {% bootstrap_form userForm %}
 
 {% bootstrap_form profileForm %}
+
 <input type="submit" value="Create Account"></input>
 </form>
 

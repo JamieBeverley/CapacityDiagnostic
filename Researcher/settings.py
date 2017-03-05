@@ -32,9 +32,6 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'Patient.apps.PatientConfig',
-    'Researcher.apps.ResearcherConfig',
-    'embed_video',
-    'bootstrap3',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -58,7 +55,7 @@ ROOT_URLCONF = 'CapacityDiagnostic.urls'
 TEMPLATES = [
     {
     'BACKEND': 'django.template.backends.django.DjangoTemplates',
-            'DIRS': [os.path.join(BASE_DIR, 'CapacityDiagnostic/templates')],
+            'DIRS': [os.path.join(BASE_DIR, 'Patient/templates')],
             'APP_DIRS': True,
             'OPTIONS': {
                     'context_processors': [
@@ -119,12 +116,9 @@ USE_L10N = True
 USE_TZ = True
 
 
+LOGIN_REDIRECT_URL = ".."
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
-
-
-# redirect
-LOGIN_REDIRECT_URL = '../home/'
-# LOGIN_REDIRECT_URL = '../logged'

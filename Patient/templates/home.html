@@ -1,14 +1,16 @@
 {% extends 'patientBase.html' %}
-
+{% load bootstrap3 %}
 
 {% block content%}
 
-<h>Welcome {{user}}</h>
-<p>Please complete the following form:<p>
+<div class='container'>
+	<h1>Welcome {{user}}</h1>
+	<h2>Please complete the following form:</h2>
 
-<form method="POST"> 
+	<form method="POST"> 
 
-{{form.as_p}}
-<input type="submit"></input>
-</form>
+	{% bootstrap_form form %}
+	<input type="submit"></input>
+	</form>
+</div>
 {% endblock%}

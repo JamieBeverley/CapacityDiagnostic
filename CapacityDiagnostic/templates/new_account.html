@@ -1,12 +1,17 @@
 {% extends 'base.html' %}
 
+{% load bootstrap3 %}
+
 {% block content %}
-<h> New Account<h>
-<form method='POST'>
+
+<div class='container'>
+<h2> New Account</h2>
+<form method='POST' class='form'>
 {% csrf_token %}
-{{form.as_p}}
+{% bootstrap_form form %}
 <input type="submit" value="Create Account"></input>
 </form>
 
 <p> {{errorMsg}}<p>
+</div>
 {% endblock %}

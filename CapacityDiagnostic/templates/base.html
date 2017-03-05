@@ -1,3 +1,23 @@
-{% block title %} <b> Capacity Diagnostics </b>{% endblock %}
+{% block bootstrapLoad %}
+{% load bootstrap3 %}
+
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_messages %}
+
+{% endblock %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+{% block head %}
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+{% endblock %}
+
+{% block title %} <div class="container"><h1 class="jumbotron"> Capacity Diagnostics </h1></div>{% endblock %}
 
 {% block content %} homepage content... {% endblock %}
+</html>

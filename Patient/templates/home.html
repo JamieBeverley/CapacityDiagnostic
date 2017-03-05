@@ -1,0 +1,14 @@
+{% extends 'patientBase.html' %}
+
+
+{% block content%}
+
+<h>Welcome {{user}}</h>
+<p>Please complete the following form:<p>
+
+<form method="POST"> 
+
+{{form.as_p}}
+<input type="submit"></input>
+</form>
+{% endblock%}

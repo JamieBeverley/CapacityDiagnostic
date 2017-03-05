@@ -6,6 +6,7 @@ from django.template import loader
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 from forms import QuestionForm
+from models import Profile,Questions
 
 from django.http import HttpResponse
 
@@ -26,16 +27,17 @@ def home(request):
 		form = QuestionForm(request.POST)
 		if form.is_valid():
 			score = 0
-
-
-
 			for i in [('Q'+str(i)) for i in range(1,7)]:
 				score = score+ int(request.POST[i])
-			msg = 'Thank you, your score has been recorded'
+			
+			questionResponse = Questions.objects.create(profile=Profile.objects.get(user_id=request.user))
+			form.save(instance=questionResponse)
+
+			msg = 'Thank you, your answers have been recorded.'
 			return HttpResponse(template.render({'score':score,'form':form,'msg':msg},request))
 		else:
 			return HttpResponse([(field.label,field.errors) for field in form])
 	# return HttpResponse("asdf")
-	
-	return HttpResponse(template.render({'form':form},request))
+	# hcnum = Profile.objects.get(user_id=request.user).healthcardNumber
+	return HttpResponse(template.render({'notSubmitted':True,'form':form},request))
 

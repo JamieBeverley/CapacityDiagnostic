@@ -1,5 +1,5 @@
 from django import forms
-from models import Questions
+from models import Questions, Profile
 # class ParticipantForm(forms.Form):
 # 	years = [x for x in range(1920,2018)]
 # 	dateOfBirth = forms.DateField(widget=forms.SelectDateWidget(years=years))
@@ -13,3 +13,10 @@ class QuestionForm(forms.ModelForm):
         for i in fields:
             widgets[i] = forms.RadioSelect()
         widgets["Q8"] = forms.Textarea()
+
+
+class ProfileForm(forms.ModelForm):
+	class Meta:
+		model = Profile
+		fields = ['healthcardNumber']
+		widgets = {'healthcardNumber': forms.TextInput}

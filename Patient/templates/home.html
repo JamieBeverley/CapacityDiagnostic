@@ -1,12 +1,21 @@
 {% extends 'patientBase.html' %}
 {% load bootstrap3 %}
+{% load static %}
+
 
 {% block content%}
 
+
 <div class='container'>
+	
+	
 	<h1>Welcome {{user}}</h1>
-	<h2>{{msg}} </h2>
-	<h2>score:  {{ score  }}</h2>>
+	
+	{% if notSubmitted%}
+	<video controls>
+		<source src="{% static "Patient/v1.mp4" %}" type="video/mp4"> </source>
+ 	</video>
+
 	<h2>Please complete the following form:</h2>
 
 	<form method="POST"> 
@@ -14,5 +23,7 @@
 	{% bootstrap_form form %}
 	<input type="submit"></input>
 	</form>
+	{% endif %}
+	<h2>{{msg}} </h2>
 </div>
 {% endblock%}

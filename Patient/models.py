@@ -8,6 +8,10 @@ from django.dispatch import receiver
 from django import forms
 
 
+class Profile(models.Model):
+	user = models.OneToOneField(User,on_delete=models.CASCADE)
+	healthcardNumber = models.CharField(primary_key=True,max_length=12,verbose_name="Health Card Number")
+	score = models.FloatField(null=True,verbose_name="Capacity score")
 
 
 # CHOICES1 = (('a','The beach'),('b','An amusement park'),('c','The dinner table'),(0,'I am not sure'))
@@ -28,6 +32,7 @@ CHOICES7 = (('y','Yes'),('n','No'))
 
 
 class Questions(models.Model):
+	profile = models.ForeignKey('Profile', on_delete=models.CASCADE,null=True)
 	Q1 = models.IntegerField(choices=CHOICES1,verbose_name="Where is the patient at the beginning of the story?")
 	Q2 = models.IntegerField(choices=CHOICES2,verbose_name="What is the patient's concern?")
 	Q3 = models.IntegerField(choices=CHOICES3,verbose_name="What does the doctor suggest for the patient?")
@@ -36,3 +41,14 @@ class Questions(models.Model):
 	Q6 = models.IntegerField(choices=CHOICES6,verbose_name="If the patient does not receive the surgery...")
 	Q7 = models.CharField(max_length=1, choices=(('y','Yes'),('n','No')),verbose_name="In your opinion, should the patient receive the surgery?")
 	Q8 = models.CharField(max_length=400, verbose_name="Why?")
+
+
+
+# @receiver(post_save, sender=User)
+# def create_user_profile(sender, instance, created, **kwargs):
+# 	if created:
+# 		Profile.objects.create(user=instance)
+
+# @receiver(post_save, sender = User)
+# def save_user_profile(sender, instance, **kwargs):
+# 	instance.profile.save

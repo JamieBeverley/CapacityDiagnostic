@@ -24,6 +24,10 @@ def logout_user(request):
 # def newAccount(request):
 	# if (request.method == 'POST'):
 
+def about(request):
+        template = loader.get_template('./about.html')
+        return HttpResponse(template.render({},request))
+
 def new_account(request):
 	errorMsg = ""
 	if request.method == 'POST':

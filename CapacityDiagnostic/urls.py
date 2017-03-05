@@ -24,6 +24,7 @@ urlpatterns = [
     url(r'^login/$', auth_views.login, {'template_name': 'login.html'}, name='login'),
     url(r'^logout/$', views.logout_user, name='logout_user'),
     url(r'^new_account/$', views.new_account, name='new_account'),
+    url(r'^about/$', views.about, name="about"),
     url(r'^home/$', patient_views.home,name='patient_home')
 
     # url('^', include('django.contrib.auth.urls'))

@@ -1,12 +1,24 @@
 {% extends 'base.html' %}
-
+{% load bootstrap3 %}
 {% block content %}
-  <h2>Login</h2>
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Login</button>
-  </form>
+  
+<div class='container bg-info'>
 
-<a href="/new_account">New Account</a>
+  <h2>Login</h2>
+  <form method="post" class='form'>
+    {% csrf_token %}
+  	{% bootstrap_form form %}  	
+  			{% buttons %}
+    		<button type="submit" class="btn btn-primary">
+      		{% bootstrap_icon "star" %} Submit
+    		</button>
+ 	 		{% endbuttons %}
+  </form>
+	<a href="/new_account">New Account</a>
+    <a href="/about">About</a>
+
+</div>
+
+
+
 {% endblock  %}

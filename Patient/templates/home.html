@@ -1,14 +1,27 @@
+<div class="bg-info">
 {% extends 'patientBase.html' %}
-
+{% load bootstrap3 %}
 
 {% block content%}
 
-<h>Welcome {{user}}</h>
-<p>Please complete the following form:<p>
 
-<form method="POST"> 
+<div class='container bg-warning'>
 
-{{form.as_p}}
-<input type="submit"></input>
-</form>
+<h1 class="text-center">Welcome {{user}}</h1>
+
+	
+
+
+	<h2>{{msg}} </h2>
+	<h2>score:  {{ score  }}</h2>
+	<h2>Please answer the following questions to the best of your ability:</h2>
+
+	<form method="POST"> 
+	{% csrf_token %}
+	{% bootstrap_form form %}
+
+	<button type="button" class="btn btn-default">Submit</button>
+	</form>
+</div> </div>
 {% endblock%}
+

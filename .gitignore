@@ -1,9 +1,8 @@
-
-lib*
-bin*
-.Python*
-include*
-pip*
-*.sqlite3
 *.pyc
-
+*.sqlite3
+.Python*
+*.DS_Store
+bin/*
+includ/*
+lib/*
+pip*

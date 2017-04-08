@@ -64,6 +64,7 @@ def new_account(request):
 		if pForm.is_valid() and uForm.is_valid():
 			user = uForm.save() #User.objects.create_user(username=username,password=password)
 			# user.save()
+			# if (reques)
 			profile = Profile.objects.create(user=user,isResearcher=(request.POST['isResearcher']=='on'),healthcardNumber=pForm.cleaned_data['healthcardNumber'])
 			profile.save()
 			researcher_home(request)
